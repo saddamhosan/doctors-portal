@@ -42,11 +42,11 @@ const Services = () => {
         ))}
       </div>
 
-      <div className="flex justify-center items-center mt-16">
+      <div className="lg:flex justify-center items-center mt-16">
         <div className="flex-1 flex justify-center">
           <img src={treatment} alt="" className="max-h-[80vh]" />
         </div>
-        <div className="flex-1 mr-10">
+        <div className="flex-1 mr-10 p-6">
           <h1 className="text-4xl mb-4 font-bold">Exceptional Dental Care, on Your Terms</h1>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit

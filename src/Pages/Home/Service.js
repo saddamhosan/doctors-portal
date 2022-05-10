@@ -2,7 +2,7 @@ import React from 'react';
 
 const Service = ({service}) => {
     return (
-      <div class="card  bg-base-100 shadow-xl">
+      <div class="card  bg-base-100 shadow-xl my-6">
         <figure class="px-10 pt-10">
           <img
             src={service.img}
