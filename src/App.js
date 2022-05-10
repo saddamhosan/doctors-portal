@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import About from './About/About';
 import './App.css';
-import Appointment from './Appointment/Appointment';
+import About from './Pages/About/About';
+import Appointment from './Pages/Appointment/Appointment';
 import Home from './Pages/Home/Home';
-import Header from './Shared/Header';
+import Header from './Pages/Shared/Header';
 
 function App() {
   return (

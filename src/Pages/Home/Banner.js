@@ -1,17 +1,21 @@
 import React from 'react';
+import bg from '../../assets/images/bg.png';
 import chair from '../../assets/images/chair.png';
 
 const Banner = () => {
     return (
-      <div>
-        <div className="hero min-h-[70vh]">
-          <div className="hero-content flex-col lg:flex-row-reverse mx-10">
+      <div style={{
+        background:`url(${bg})`,
+        backgroundSize:'cover'
+      }} className='my-10'>
+        <div className="hero min-h-[70vh] ">
+          <div className="hero-content flex-col lg:flex-row-reverse ">
             <img
               src={chair}
               className="max-w-sm rounded-lg shadow-2xl"
               alt=""
             />
-            <div className="lg:w-1/2 mr-4 mt-4">
+            <div className=" mt-4">
               <h1 className="text-5xl font-bold">Your new smile start here</h1>
               <p className="py-6">
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
