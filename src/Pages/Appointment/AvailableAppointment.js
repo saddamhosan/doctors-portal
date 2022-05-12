@@ -14,9 +14,9 @@ const AvailableAppointment = ({ date, setTreatment }) => {
         Available appointment on {format(date, "PP")}
       </p>
 
-      <div className="grid grid-cols-3 gap-6 my-10">
+      <div className="md:grid grid-cols-3 gap-6 my-10">
         {services.map((service) => (
-          <div key={service._id} className="shadow-lg py-6">
+          <div key={service._id} className="shadow-lg py-6 mt-6">
             <p className="text-center text-secondary text-xl">{service.name}</p>
             <p className="text-center text-xl">
               {service.slot?.length > 0 ? (
