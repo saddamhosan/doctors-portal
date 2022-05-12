@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -25,16 +25,19 @@ const {
     const [sendPasswordResetEmail, sending, pResetError] =
       useSendPasswordResetEmail(auth);
 
+    useEffect(()=>{
+        if (user || gUser) {
+          navigate(from, { replace: true });
+        }
+    },[from,navigate,user,gUser])
+
     if (loading || gLoading || sending) {
       return <Loading />;
     }
 
-    if (user || gUser) {
-      navigate(from, { replace: true });
-    }
+    
 
 const onSubmit = (data) => {
-    console.log(data)
     signInWithEmailAndPassword(data.email,data.password)
 };
   return (
