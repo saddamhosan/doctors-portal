@@ -16,16 +16,16 @@ const BookModal = ({ treatment, date, setTreatment }) => {
 
   return (
     <div>
-      <input type="checkbox" id="book-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
+      <input type="checkbox" id="book-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
           <label
-            for="book-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            htmlFor="book-modal"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="font-bold text-xl text-center text-secondary">{name}</h3>
+          <h3 className="font-bold text-xl text-center text-secondary">{name}</h3>
           <form onSubmit={handleSubmit}>
             <input
               className="block border rounded-xl my-2 w-10/12 mx-auto p-2"
@@ -33,10 +33,11 @@ const BookModal = ({ treatment, date, setTreatment }) => {
               name="date"
               value={format(date, "PP")}
               disabled
+              readOnly
             />
             <select
               name="slot"
-              class="block select select-bordered  w-10/12 mx-auto p-2"
+              className="block select select-bordered  w-10/12 mx-auto p-2"
             >
               {slot.map((slo) => (
                 <option value={slo}>{slo}</option>
@@ -48,12 +49,14 @@ const BookModal = ({ treatment, date, setTreatment }) => {
               name="name"
               value={user?.displayName}
               disabled
+              readOnly
             />
             <input
               className="block border rounded-xl my-2 w-10/12 mx-auto p-2"
               type="email"
               name="email"
               value={user?.email}
+              readOnly
               disabled
             />
             <input

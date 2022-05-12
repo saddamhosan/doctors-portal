@@ -7,7 +7,6 @@ import Loading from "./Shared/Loading";
 
 const Login = () => {
     const [email,setEmail]=useState('')
-    console.log(email)
 
     const location=useLocation()
     let from = location.state?.from?.pathname || "/";
@@ -46,14 +45,14 @@ const onSubmit = (data) => {
         </h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div class="form-control ">
-            <label class="label">
-              <span class="label-text">Email</span>
+          <div className="form-control ">
+            <label className="label">
+              <span className="label-text">Email</span>
             </label>
             <input
             onBlur={(e)=>setEmail(e.target.value)}
               type="email"
-              class="input input-bordered w-full "
+              className="input input-bordered w-full "
               {...register("email", {
                 required: {
                   value: true,
@@ -65,27 +64,27 @@ const onSubmit = (data) => {
                 },
               })}
             />
-            <label class="label">
+            <label className="label">
               {errors.email?.type === "required" && (
-                <span class="label-text-alt text-red-500">
+                <span className="label-text-alt text-red-500">
                   {errors.email.message}
                 </span>
               )}
               {errors.email?.type === "pattern" && (
-                <span class="label-text-alt text-red-500">
+                <span className="label-text-alt text-red-500">
                   {errors.email.message}
                 </span>
               )}
             </label>
           </div>
 
-          <div class="form-control w-full">
-            <label class="label">
-              <span class="label-text">Password</span>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Password</span>
             </label>
             <input
               type="password"
-              class="input input-bordered w-full"
+              className="input input-bordered w-full"
               {...register("password", {
                 required: {
                   value: true,
@@ -97,14 +96,14 @@ const onSubmit = (data) => {
                 },
               })}
             />
-            <label class="label">
+            <label className="label">
               {errors.password?.type === "required" && (
-                <span class="label-text-alt text-red-500">
+                <span className="label-text-alt text-red-500">
                   {errors.password.message}
                 </span>
               )}
               {errors.password?.type === "minLength" && (
-                <span class="label-text-alt text-red-500">
+                <span className="label-text-alt text-red-500">
                   {errors.password.message}
                 </span>
               )}
@@ -142,9 +141,9 @@ const onSubmit = (data) => {
           Reset Password
         </button>
       </p>
-      <div class="divider">OR</div>
+      <div className="divider">OR</div>
       <div className="flex justify-center">
-        <button onClick={() => signInWithGoogle()} class="btn btn-outline">
+        <button onClick={() => signInWithGoogle()} className="btn btn-outline">
           CONTINUE WITH GOOGLE
         </button>
       </div>

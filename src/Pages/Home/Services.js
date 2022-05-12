@@ -23,7 +23,7 @@ const Services = () => {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem veniam odio fugiat vitae ex magni",
     },
     {
-      _id: 1,
+      _id: 3,
       img: whitening,
       title: "Teeth Whitening",
       detail:
