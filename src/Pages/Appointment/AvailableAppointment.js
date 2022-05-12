@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 const AvailableAppointment = ({ date, setTreatment }) => {
   const [services,setServices]=useState([]) 
   useEffect(()=>{
-    fetch("http://localhost:4000/service")
-    .then(res=>res.json())
-    .then(data=>setServices(data))
+    fetch("https://infinite-oasis-14663.herokuapp.com/service")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
   },[])
   return (
     <div>

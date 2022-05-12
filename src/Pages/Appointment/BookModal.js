@@ -1,7 +1,10 @@
 import { format } from 'date-fns';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const BookModal = ({ treatment, date, setTreatment }) => {
+  const [user]=useAuthState(auth)
   const { name, slot } = treatment;
 
   const handleSubmit = (e) => {
@@ -43,7 +46,15 @@ const BookModal = ({ treatment, date, setTreatment }) => {
               className="block border rounded-xl my-2 w-10/12 mx-auto p-2"
               type="text"
               name="name"
-              placeholder="Your Name"
+              value={user?.displayName}
+              disabled
+            />
+            <input
+              className="block border rounded-xl my-2 w-10/12 mx-auto p-2"
+              type="email"
+              name="email"
+              value={user?.email}
+              disabled
             />
             <input
               className="block border rounded-xl my-2 w-10/12 mx-auto p-2"
@@ -51,12 +62,7 @@ const BookModal = ({ treatment, date, setTreatment }) => {
               name="number"
               placeholder="Your Number"
             />
-            <input
-              className="block border rounded-xl my-2 w-10/12 mx-auto p-2"
-              type="email"
-              name=""
-              placeholder="Email Address"
-            />
+
             <input
               className="block my-3 w-1/4 mx-auto btn bg-gradient-to-r from-secondary to-primary text-white font bold font-serif border-0"
               type="submit"
