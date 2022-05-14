@@ -7,7 +7,11 @@ const MyAppointment = () => {
     const [myBooking, setMyBooking] = useState([]);
     const url = `http://localhost:4000/booking?patentEmail=${user.email}`;
     useEffect(()=>{
-        fetch(url)
+        fetch(url,{
+          headers:{
+            'authorization':`Bearer ${localStorage.getItem('Token')}`
+          }
+        })
           .then((res) => res.json())
           .then((data) => setMyBooking(data));
     },[url])

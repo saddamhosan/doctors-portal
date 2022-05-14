@@ -5,6 +5,10 @@ import { Link, NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Header = () => {
+  const handleSignOut=()=>{
+    localStorage.removeItem('Token')
+    signOut(auth);
+  }
   const [user]=useAuthState(auth)
     const manuItems = (
       <>
@@ -31,7 +35,7 @@ const Header = () => {
         )}
         <li>
           {user?.uid ? (
-            <button onClick={() => signOut(auth)} className="btn btn-ghost">
+            <button onClick={handleSignOut} className="btn btn-ghost">
               Log Out
             </button>
           ) : (

@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../Hook/useToken";
 import auth from './../firebase.init';
 import Loading from "./Shared/Loading";
 
 const Login = () => {
-    const [email,setEmail]=useState('')
 
     const location=useLocation()
     let from = location.state?.from?.pathname || "/";
 const {
   register,
+  watch,
   formState: { errors },
   handleSubmit,
 } = useForm();
+const email= (watch('email'))
 
     const [signInWithEmailAndPassword, user, loading, error] =
       useSignInWithEmailAndPassword(auth);
@@ -25,11 +27,13 @@ const {
     const [sendPasswordResetEmail, sending, pResetError] =
       useSendPasswordResetEmail(auth);
 
-    useEffect(()=>{
-        if (user || gUser) {
-          navigate(from, { replace: true });
-        }
-    },[from,navigate,user,gUser])
+      const [token]=useToken(user || gUser)
+
+    useEffect(() => {
+      if (token) {
+        navigate(from, { replace: true });
+      }
+    }, [from, navigate, token]);
 
     if (loading || gLoading || sending) {
       return <Loading />;
@@ -53,7 +57,6 @@ const onSubmit = (data) => {
               <span className="label-text">Email</span>
             </label>
             <input
-            onBlur={(e)=>setEmail(e.target.value)}
               type="email"
               className="input input-bordered w-full "
               {...register("email", {

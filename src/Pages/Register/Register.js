@@ -1,10 +1,11 @@
 import React from 'react';
 import {
-    useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile
+  useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
+import useToken from '../../Hook/useToken';
 import Loading from '../Shared/Loading';
 
 const Register = () => {
@@ -14,6 +15,8 @@ const Register = () => {
       handleSubmit,
     } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const [createUserWithEmailAndPassword, user, loading, error] =
       useCreateUserWithEmailAndPassword(auth, { sendEmailVerification :true});
@@ -23,19 +26,24 @@ const Register = () => {
 
       const [updateProfile, updating, uError] = useUpdateProfile(auth);
 
+      const [token] = useToken(user || gUser);
+
     if (loading || gLoading || updating) {
       return <Loading />;
     }
 
-    if (user || gUser) {
-      navigate("/");
+    if (token) {
+      navigate(from, { replace: true });
     }
 
     const onSubmit = async(data) => {
-      console.log(data);
       await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName :data.name});
     };
+
+    const handleGoogleSignIn=async()=>{
+      await signInWithGoogle()
+    }
     return (
       <div className="w-1/2 mx-auto shadow-xl p-10 my-10 rounded-xl">
         <div>
@@ -151,7 +159,7 @@ const Register = () => {
         </p>
         <div className="divider">OR</div>
         <div className="flex justify-center">
-          <button onClick={() => signInWithGoogle()} className="btn btn-outline">
+          <button onClick={handleGoogleSignIn} className="btn btn-outline">
             CONTINUE WITH GOOGLE
           </button>
         </div>
