@@ -1,17 +1,46 @@
 import { format } from 'date-fns';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 
-const BookModal = ({ treatment, date, setTreatment }) => {
+const BookModal = ({refetch, treatment, date, setTreatment }) => {
   const [user]=useAuthState(auth)
-  const { name, slot } = treatment;
+  const { name, slots } = treatment;
+  const formateDate=format(date,'PP')
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const slot = e.target.slot.value;
-    console.log(slot);
-    setTreatment(null)
+    
+    const booked = {
+      treatment: name,
+      date: formateDate,
+      patentName: user.displayName,
+      patentEmail: user.email,
+      slot: e.target.slot.value,
+      number: e.target.number.value,
+    };
+    console.log(booked);
+    fetch("http://localhost:4000/booking", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(booked),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.success){
+          refetch()
+          toast.success(`Booking success ${date} at ${data.slot}`,{id:"booked"})
+        }else{
+          console.log(data);
+          toast.error(
+            `Already Booked on ${data.exists.date} at ${data.exists.slot}`,
+            { id: "booked" }
+          );
+        }
+        setTreatment(null);
+      });
+    
   };
 
   return (
@@ -39,7 +68,7 @@ const BookModal = ({ treatment, date, setTreatment }) => {
               name="slot"
               className="block select select-bordered  w-10/12 mx-auto p-2"
             >
-              {slot.map((slo) => (
+              {slots.map((slo) => (
                 <option value={slo}>{slo}</option>
               ))}
             </select>

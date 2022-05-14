@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import RequireAuth from './assets/RequireAuth';
@@ -28,6 +29,7 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
+      <Toaster />
     </div>
   );
 }
