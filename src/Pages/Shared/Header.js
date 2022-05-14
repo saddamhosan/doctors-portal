@@ -23,18 +23,22 @@ const Header = () => {
         <li>
           <NavLink to="/contactUs">Contact Us</NavLink>
         </li>
+
+        {user && (
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+        )}
         <li>
           {user?.uid ? (
-            <button onClick={()=>signOut(auth)} className="btn btn-ghost">Log Out</button>
+            <button onClick={() => signOut(auth)} className="btn btn-ghost">
+              Log Out
+            </button>
           ) : (
             <NavLink to="/login">Login</NavLink>
           )}
         </li>
-        <li>
-          {
-            user?.uid ? <p>{user.displayName}</p>:''
-          }
-        </li>
+        <li>{user?.uid ? <p>{user.displayName}</p> : ""}</li>
       </>
     );
     return (
