@@ -4,6 +4,7 @@ import './App.css';
 import RequireAuth from './assets/RequireAuth';
 import About from './Pages/About/About';
 import Appointment from './Pages/Appointment/Appointment';
+import AllUser from "./Pages/Dashboard/AllUser";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
@@ -38,6 +39,7 @@ function App() {
         >
           <Route index element={<MyAppointment />} />
           <Route path="dashboard/myReview" element={<MyReview />} />
+          <Route path="dashboard/allUser" element={<AllUser />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
