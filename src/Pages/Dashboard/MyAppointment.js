@@ -16,7 +16,6 @@ const MyAppointment = () => {
           }
         })
           .then((res) =>{ 
-            console.log(res)
             if (res.status===401 || res.status===403){
               localStorage.removeItem("Token");
               signOut(auth);
@@ -42,7 +41,7 @@ const MyAppointment = () => {
             {/* <!-- row 1 --> */}
 
             {myBooking?.map((service, index) => (
-              <tr>
+              <tr key={index}>
                 <th>{index + 1}</th>
                 <td>{service.treatment}</td>
                 <td>{service.date}</td>
