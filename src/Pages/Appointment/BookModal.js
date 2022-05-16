@@ -21,7 +21,7 @@ const BookModal = ({refetch, treatment, date, setTreatment }) => {
       number: e.target.number.value,
     };
     console.log(booked);
-    fetch("http://localhost:4000/booking", {
+    fetch("https://infinite-oasis-14663.herokuapp.com/booking", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(booked),

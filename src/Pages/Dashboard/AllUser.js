@@ -9,7 +9,7 @@ import User from './User';
 const AllUser = () => {
     const navigate = useNavigate();
     const { data: users, isLoading ,refetch } = useQuery("users", () =>
-      fetch("http://localhost:4000/users", {
+      fetch("https://infinite-oasis-14663.herokuapp.com/users", {
           method:"GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("Token")}`,

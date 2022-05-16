@@ -13,7 +13,7 @@ const AddDoctor = () => {
   } = useForm();
 
   const { data: specialtys, isLoading } = useQuery("specialty", () =>
-    fetch("http://localhost:4000/service").then((res) => res.json())
+    fetch("https://infinite-oasis-14663.herokuapp.com/service").then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;
@@ -40,7 +40,7 @@ const AddDoctor = () => {
             specialty: data.specialty,
             img:img
           };
-          fetch("http://localhost:4000/doctor", {
+          fetch("https://infinite-oasis-14663.herokuapp.com/doctor", {
             method: "post",
             headers: {
               "content-type": "application/json",

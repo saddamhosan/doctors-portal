@@ -8,7 +8,7 @@ const MyAppointment = () => {
   const navigate=useNavigate()
     const [user]=useAuthState(auth)
     const [myBooking, setMyBooking] = useState([]);
-    const url = `http://localhost:4000/booking?patentEmail=${user.email}`;
+    const url = `https://infinite-oasis-14663.herokuapp.com/booking?patentEmail=${user.email}`;
     useEffect(()=>{
         fetch(url,{
           headers:{

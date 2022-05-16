@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 const User = ({ user, index, refetch }) => {
   const { email, role } = user;
   const handleMakeAdmin = () => {
-    fetch(`http://localhost:4000/user/admin/${email}`, {
+    fetch(`https://infinite-oasis-14663.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("Token")}`,
