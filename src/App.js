@@ -5,6 +5,7 @@ import RequireAdmin from "./assets/RequireAdmin";
 import RequireAuth from './assets/RequireAuth';
 import About from './Pages/About/About';
 import Appointment from './Pages/Appointment/Appointment';
+import AddDoctor from "./Pages/Dashboard/AddDoctor";
 import AllUser from "./Pages/Dashboard/AllUser";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
@@ -45,6 +46,14 @@ function App() {
             element={
               <RequireAdmin>
                 <AllUser />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="addDoctor"
+            element={
+              <RequireAdmin>
+                <AddDoctor />
               </RequireAdmin>
             }
           />
