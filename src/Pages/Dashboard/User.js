@@ -11,16 +11,16 @@ const User = ({ user, index, refetch }) => {
       },
     })
       .then((res) => {
-          if(res.status===403){
-              toast.error("Not successfully made admin");
-          }
-          return res.json()
-    })
+        if (res.status === 403) {
+          toast.error("Not successfully made admin");
+        }
+        return res.json();
+      })
       .then((data) => {
-          if (data.matchedCount>0){
-             toast.success("successfully made admin");
-             refetch();
-          }
+        if (data.matchedCount > 0) {
+          toast.success("successfully made admin");
+          refetch();
+        }
       });
   };
   return (

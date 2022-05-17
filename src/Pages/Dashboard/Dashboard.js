@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from './../../Hook/useAdmin';
 
@@ -32,13 +32,14 @@ const Dashboard = () => {
               <Link to="/dashboard">My Appointment</Link>
             </li>
             <li>
-              <Link to="myReview">My Review</Link>
+              <NavLink to="myReview">My Review</NavLink>
             </li>
             <li>
               {admin && (
                 <>
-                  <Link to="allUser">All User</Link>
-                  <Link to="addDoctor">Add Doctor</Link>
+                  <NavLink to="allUser">All User</NavLink>
+                  <NavLink to="addDoctor">Add Doctor</NavLink>
+                  <NavLink to="manageDoctor">Manage Doctor</NavLink>
                 </>
               )}
             </li>

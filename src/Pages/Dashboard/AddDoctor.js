@@ -124,7 +124,7 @@ const AddDoctor = () => {
             <span className="label-text">Specialty</span>
           </label>
           <select
-            class="select select-bordered w-full"
+            className="select select-bordered w-full"
             {...register("specialty", {
               required: {
                 value: true,

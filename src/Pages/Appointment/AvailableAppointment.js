@@ -1,9 +1,7 @@
 import { format } from "date-fns";
 import React from "react";
 
-
-const AvailableAppointment = ({services, date, setTreatment }) => {
- 
+const AvailableAppointment = ({ services, date, setTreatment }) => {
   return (
     <div>
       <p className="text-center text-secondary text-xl font-bold">

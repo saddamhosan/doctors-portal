@@ -8,20 +8,24 @@ import User from './User';
 
 const AllUser = () => {
     const navigate = useNavigate();
-    const { data: users, isLoading ,refetch } = useQuery("users", () =>
+    const {
+      data: users,
+      isLoading,
+      refetch,
+    } = useQuery("users", () =>
       fetch("https://infinite-oasis-14663.herokuapp.com/users", {
-          method:"GET",
+        method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("Token")}`,
         },
       }).then((res) => {
-          if (res.status === 401 || res.status === 403) {
-            localStorage.removeItem("Token");
-            signOut(auth);
-            navigate("/login");
-          }
-          return res.json()
-        })
+        if (res.status === 401 || res.status === 403) {
+          localStorage.removeItem("Token");
+          signOut(auth);
+          navigate("/login");
+        }
+        return res.json();
+      })
     );
     if(isLoading){
         return <Loading/>

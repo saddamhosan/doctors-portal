@@ -68,8 +68,8 @@ const BookModal = ({refetch, treatment, date, setTreatment }) => {
               name="slot"
               className="block select select-bordered  w-10/12 mx-auto p-2"
             >
-              {slots.map((slo) => (
-                <option value={slo}>{slo}</option>
+              {slots.map((slo,index) => (
+                <option key={index} value={slo}>{slo}</option>
               ))}
             </select>
             <input
