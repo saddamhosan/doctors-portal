@@ -11,6 +11,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import ManageDoctor from "./Pages/Dashboard/ManageDoctor";
 import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
+import Payment from "./Pages/Dashboard/Payment";
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register/Register';
@@ -42,6 +43,7 @@ function App() {
         >
           <Route index element={<MyAppointment />} />
           <Route path="myReview" element={<MyReview />} />
+          <Route path="payment/:id" element={<Payment />} />
           <Route
             path="allUser"
             element={

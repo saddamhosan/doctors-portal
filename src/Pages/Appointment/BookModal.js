@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 
 const BookModal = ({refetch, treatment, date, setTreatment }) => {
   const [user]=useAuthState(auth)
-  const { name, slots } = treatment;
+  const { name, slots, price } = treatment;
   const formateDate=format(date,'PP')
 
   const handleSubmit = (e) => {
@@ -15,6 +15,7 @@ const BookModal = ({refetch, treatment, date, setTreatment }) => {
     const booked = {
       treatment: name,
       date: formateDate,
+      price,
       patentName: user.displayName,
       patentEmail: user.email,
       slot: e.target.slot.value,

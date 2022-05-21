@@ -23,6 +23,7 @@ const AvailableAppointment = ({ services, date, setTreatment }) => {
               {service.slots?.length}{" "}
               {service.slots?.length > 1 ? "spaces" : "space"} available
             </p>
+            <p className="text-center"><small>Price: ${service.price}</small></p>
             <div className="flex justify-center my-4">
               <label
                 onClick={() => setTreatment(service)}
